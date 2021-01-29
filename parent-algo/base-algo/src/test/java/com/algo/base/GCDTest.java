@@ -10,7 +10,9 @@ class GCDTest {
         GCD gcd = new GCD();
         assertEquals(4, gcd.findGCD(100,32));
         assertEquals(1, gcd.findGCD(100,33));
-        assertEquals(2, gcd.findGCD(33,100));
+        assertEquals(1, gcd.findGCD(33,100));
+        assertEquals(12, gcd.findGCD(24,12));
+        assertEquals(1, gcd.findGCD(5612,15897));
     }
 
 }
