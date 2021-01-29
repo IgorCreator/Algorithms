@@ -6,9 +6,10 @@ public class BinarySearch {
 
     private int i = 0;
 
-    public void findElement(int[] sortedArray, int elementToFind) {
+    public void findElementWithRecursion(int[] sortedArray, int elementToFind) {
         if(sortedArray.length == 0) {
             System.out.println("Element can't be found in provided array. Amount of tries: " + i);
+            zeroOutIncrementor();
             return;
         }
 
@@ -28,11 +29,47 @@ public class BinarySearch {
 
         int[] newArrayAfterCutting = Arrays.copyOfRange(sortedArray, idxLow, idxHigh);
         i++;
-        findElement(newArrayAfterCutting, elementToFind);
+        findElementWithRecursion(newArrayAfterCutting, elementToFind);
+    }
+
+    public void findElementWithWhile(int[] sortedArray, int elementToFind) {
+        if(sortedArray.length == 0) {
+            System.out.println("Element can't be found in provided array. Amount of tries: " + i);
+            return;
+        }
+
+        int idxLow = 0;
+        int idxHigh = sortedArray.length;
+
+
+        while (idxLow <= idxHigh){
+            i++;
+            int mid = (idxLow + idxHigh) / 2;
+            if (sortedArray[mid] == elementToFind) {
+                System.out.println("success, number found. Amount of tries: " + i);
+                zeroOutIncrementor();
+                return;
+            } else if (sortedArray[mid] > elementToFind) {
+                idxHigh = mid - 1 ;
+            } else if (sortedArray[mid] < elementToFind) {
+                idxLow = mid + 1;
+            }
+        }
     }
 
     private void zeroOutIncrementor(){
         i = 0;
+    }
+
+    public void findElementWithStaightImp(int[] sortedArray, int elementToFind) {
+        for (int elem : sortedArray) {
+            i++;
+            if(elem == elementToFind){
+                System.out.println("Found. Amount of tries: " + i);
+                zeroOutIncrementor();
+                return;
+            }
+        }
     }
 
 }

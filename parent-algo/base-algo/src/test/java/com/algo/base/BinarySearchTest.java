@@ -8,11 +8,15 @@ class BinarySearchTest {
     public void testWithRecursion(){
         BinarySearch binarySearch = new BinarySearch();
 
-        int[] array = createArray(100);
-        binarySearch.findElement(array, 10);
-        binarySearch.findElement(array, 90);
-        binarySearch.findElement(array, 0);
-        binarySearch.findElement(new int [0], 0);
+        int[] array = createArray(100000000);
+//        binarySearch.findElementWithRecursion(array, 10);
+        binarySearch.findElementWithWhile(array, 90);
+
+//        binarySearch.findElementWithRecursion(array, 0);
+        binarySearch.findElementWithWhile(new int [0], 0);
+
+        binarySearch.findElementWithWhile(array, 10000000);
+        binarySearch.findElementWithStaightImp(array, 100000000);
     }
 
     private int[] createArray(int elementsInArray) {
