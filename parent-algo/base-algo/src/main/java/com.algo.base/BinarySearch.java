@@ -35,6 +35,7 @@ public class BinarySearch {
     public void findElementWithWhile(int[] sortedArray, int elementToFind) {
         if(sortedArray.length == 0) {
             System.out.println("Element can't be found in provided array. Amount of tries: " + i);
+            zeroOutIncrementor();
             return;
         }
 
@@ -53,6 +54,10 @@ public class BinarySearch {
                 idxHigh = mid - 1 ;
             } else if (sortedArray[mid] < elementToFind) {
                 idxLow = mid + 1;
+            } else {
+                System.out.println("Element can't be found in provided array. Amount of tries: " + i);
+                zeroOutIncrementor();
+                return;
             }
         }
     }
