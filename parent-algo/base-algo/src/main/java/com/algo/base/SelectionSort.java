@@ -1,7 +1,6 @@
 package com.algo.base;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SelectionSort {
 

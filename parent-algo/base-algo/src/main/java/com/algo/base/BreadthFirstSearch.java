@@ -9,25 +9,24 @@ public class BreadthFirstSearch {
     public boolean isPathExists(Map<String, LinkedList<String>> routes, String startPoint, String destination ) {
         List<String> queueOfRoutes = new LinkedList<>();
 
-        LinkedList<String> listOfConnectedRoutesWithStartPoint = routes.get(startPoint);
-        queueOfRoutes.addAll(listOfConnectedRoutesWithStartPoint);
+        LinkedList<String> connectedToStartP = routes.get(startPoint);
+        queueOfRoutes.addAll(connectedToStartP);
 
-        LinkedList<String> routeChecked = new LinkedList<>();
-
+        LinkedList<String> visitedPoints = new LinkedList<>();
         while (!queueOfRoutes.isEmpty()) {
-            String currentPoint = queueOfRoutes.get(0);
-            queueOfRoutes.remove(currentPoint);
+            String point = queueOfRoutes.get(0);
+            queueOfRoutes.remove(point);
 
-            if (!routeChecked.contains(currentPoint)) {
-                if (currentPoint.equals(destination)) {
-                    System.out.println("Found destination: " + currentPoint);
+            if (!visitedPoints.contains(point)) {
+                if (point.equals(destination)) {
+                    System.out.println("Found destination: " + point);
                     return true;
                 } else {
                     if(!queueOfRoutes.isEmpty()){
                         String nextPoint = queueOfRoutes.get(0);
                         LinkedList<String> listOfConnectedRoutes = routes.get(nextPoint);
                         queueOfRoutes.addAll(listOfConnectedRoutes);
-                        routeChecked.add(currentPoint);
+                        visitedPoints.add(point);
                     }
                 }
             }
