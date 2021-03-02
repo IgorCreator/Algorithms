@@ -43,10 +43,8 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "nameNode='" + nameNode + '\'' +
+        return "Node: " + nameNode + '\'' +
                 ", shortestPath=" + shortestPath +
-                ", distance=" + distance +
-                '}';
+                ", distance=" + distance ;
     }
 }
