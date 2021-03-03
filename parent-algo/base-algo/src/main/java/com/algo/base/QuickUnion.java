@@ -1,10 +1,10 @@
 package com.algo.base;
 
-public class QuickFind {
+public class QuickUnion {
 
     int[] array;
 
-    public QuickFind(int elements) {
+    public QuickUnion(int elements) {
         this.array = new int[elements];
 
         for (int i = 0; i < elements; i++)
@@ -15,11 +15,15 @@ public class QuickFind {
         if(child > count() || parent > count() || child < 0 || parent < 0){
             throw new IllegalArgumentException("element can't be found in array");
         }
+        int i = root(child);
+        int j = root(parent);
+        array[i] = j;
 
-        int childId = array[child];
-        int parentId = array[parent];
-        for (int i = 0; i < array.length; i++)
-            if (array[i] == childId) array[i] = parentId;
+    }
+
+    private int root(int val) {
+        while (val != array[val]) val = array[val];
+        return val;
     }
 
     protected boolean connected(int pointA, int pointB){
