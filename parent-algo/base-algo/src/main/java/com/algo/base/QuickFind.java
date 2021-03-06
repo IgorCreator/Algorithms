@@ -4,6 +4,7 @@ public class QuickFind {
 
     int[] array;
 
+    //Running time init: N
     public QuickFind(int elements) {
         this.array = new int[elements];
 
@@ -11,6 +12,7 @@ public class QuickFind {
             array[i] = i;
     }
 
+    //Running time union: N
     public void union(int child, int parent){
         if(child > count() || parent > count() || child < 0 || parent < 0){
             throw new IllegalArgumentException("element can't be found in array");
@@ -22,6 +24,7 @@ public class QuickFind {
             if (array[i] == childId) array[i] = parentId;
     }
 
+    //Running time connected: 1
     protected boolean connected(int pointA, int pointB){
         if(pointA > count() || pointB > count() || pointA < 0 || pointB < 0){
             throw new IllegalArgumentException("element can't be found in array");
