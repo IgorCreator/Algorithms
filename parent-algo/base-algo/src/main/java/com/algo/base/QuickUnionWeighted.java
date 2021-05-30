@@ -37,6 +37,7 @@ public class QuickUnionWeighted {
         return root(nodeA) == root(pointB);
     }
 
+    //finding the root. Jumping from child to parent until find root. Running time: lg N
     private int root(int val) {
         while (val != array[val]) {
             // implementation of the path compression: point every other node to grandparent
